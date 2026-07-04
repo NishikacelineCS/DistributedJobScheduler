@@ -1,0 +1,140 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #0B0F19;
+    /* Deep Grafana/Supabase slate-950 */
+    @apply text-slate-200 antialiased;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-white tracking-tight font-medium;
+  }
+}
+
+/* Scrollbar styling inspired by VS Code / GitHub */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0B0F19;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1E293B;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+/* Professional Card & Board styles */
+.panel-card {
+  background-color: #111827;
+  /* Tailwind Gray 900 */
+  border: 1px solid #1F2937;
+  /* Tailwind Gray 800 */
+  @apply rounded-lg shadow-sm transition-all duration-200;
+}
+
+.panel-card:hover {
+  border-color: #374151;
+  /* Gray 700 */
+}
+
+/* Input Fields inspired by Supabase */
+.form-input {
+  background-color: #0B0F19;
+  border: 1px solid #374151;
+  @apply rounded-md text-slate-100 placeholder-slate-500 px-3 py-1.5 text-xs focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-blue-500/20 transition-all w-full;
+}
+
+.form-label {
+  @apply block text-[10px] uppercase font-bold tracking-wider text-slate-400 mb-1;
+}
+
+.form-helper {
+  @apply text-[10px] text-slate-500 mt-1;
+}
+
+/* Status Badges */
+.status-badge {
+  @apply px-2 py-0.5 rounded text-[10px] font-semibold inline-flex items-center gap-1.5 border;
+}
+
+.status-badge-queued {
+  background-color: rgba(37, 99, 235, 0.08);
+  border-color: rgba(37, 99, 235, 0.2);
+  color: #3B82F6;
+}
+
+.status-badge-claimed {
+  background-color: rgba(245, 158, 11, 0.08);
+  border-color: rgba(245, 158, 11, 0.2);
+  color: #F59E0B;
+}
+
+.status-badge-running {
+  background-color: rgba(245, 158, 11, 0.12);
+  border-color: rgba(245, 158, 11, 0.3);
+  color: #F59E0B;
+  @apply animate-pulse;
+}
+
+.status-badge-completed {
+  background-color: rgba(16, 185, 129, 0.08);
+  border-color: rgba(16, 185, 129, 0.2);
+  color: #10B981;
+}
+
+.status-badge-failed {
+  background-color: rgba(239, 68, 68, 0.08);
+  border-color: rgba(239, 68, 68, 0.2);
+  color: #EF4444;
+}
+
+.status-badge-dlq {
+  background-color: rgba(244, 63, 94, 0.12);
+  border-color: rgba(244, 63, 94, 0.3);
+  color: #F43F5E;
+}
+
+.status-badge-cancelled {
+  background-color: rgba(100, 116, 139, 0.08);
+  border-color: rgba(100, 116, 139, 0.2);
+  color: #94A3B8;
+}
+
+/* Skeleton Loading Animation */
+.skeleton {
+  @apply animate-pulse bg-slate-800 rounded;
+}
+
+/* Table elements */
+.table-th {
+  @apply px-4 py-2 text-slate-400 font-semibold text-[10px] uppercase tracking-wider text-left border-b border-gray-800 bg-gray-900/60;
+}
+
+.table-td {
+  @apply px-4 py-2 border-b border-gray-800/40 text-xs text-slate-300 font-medium;
+}
+
+.table-row-hover {
+  @apply hover:bg-gray-800/20 transition-colors duration-150;
+}
+
+/* Priority chip indicator */
+.priority-indicator {
+  @apply inline-flex items-center justify-center px-1.5 py-0.5 rounded-full text-[9px] font-bold font-mono border border-slate-700 bg-slate-800/50 text-slate-300;
+}

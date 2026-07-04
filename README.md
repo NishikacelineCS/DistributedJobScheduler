@@ -19,55 +19,9 @@ A production-inspired, highly reliable, multi-tenant distributed background job 
 
 ## System Architecture
 
-```mermaid
-graph TB
-    subgraph Client Layer
-        Web[React Dashboard]
-        App[External Client API]
-    end
 
-    subgraph API Layer (FastAPI)
-        Auth[Auth Service: JWT Verify]
-        JobAPI[Job Service: Enqueue]
-        SchedAPI[Schedule Service: APScheduler API]
-        MonAPI[Monitoring API]
-    end
+<img width="1225" height="980" alt="image" src="https://github.com/user-attachments/assets/07e39fe0-2ea0-4092-b3c6-01f79ab21f5c" />
 
-    subgraph DB Broker Layer (PostgreSQL)
-        UserT[(Users)]
-        TenT[(Orgs -> Projects -> Queues)]
-        JobT[(jobs / job_executions)]
-        SchedT[(schedules)]
-        WorkT[(workers)]
-    end
-
-    subgraph Worker Pool
-        SchedDaemon[APScheduler Sync Daemon]
-        WorkerNode1[Worker Node 1]
-        WorkerNode2[Worker Node 2]
-    end
-
-    Web -->|JWT Bearer| Auth
-    App -->|JWT Bearer| Auth
-    
-    Auth --> JobAPI
-    Auth --> SchedAPI
-    Auth --> MonAPI
-
-    JobAPI -->|Write/Poll| JobT
-    SchedAPI -->|Sync| SchedT
-    MonAPI -->|Read| WorkT
-    MonAPI -->|Read| JobT
-
-    SchedDaemon -->|Poll schedules & Enqueue| JobT
-    
-    WorkerNode1 -->|Heartbeat / State| WorkT
-    WorkerNode1 -->|SKIP LOCKED Claim / Write| JobT
-    WorkerNode2 -->|Heartbeat / State| WorkT
-    WorkerNode2 -->|SKIP LOCKED Claim / Write| JobT
-```
-
----
 
 ## Setup & Running Instructions
 

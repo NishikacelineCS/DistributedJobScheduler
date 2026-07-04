@@ -1,4 +1,4 @@
-#Distributed Background Job Scheduler
+# Distributed Background Job Scheduler
 
 A production-inspired, highly reliable, multi-tenant distributed background job scheduler similar to Celery or Sidekiq, powered by **FastAPI**, **PostgreSQL** (leveraging Row-Level Locking via `SELECT ... FOR UPDATE SKIP LOCKED` as the queue broker), **SQLAlchemy**, **APScheduler**, and a **React + Vite + Tailwind CSS** dashboard.
 
